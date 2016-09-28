@@ -1,11 +1,14 @@
 import React from 'react';
 import { Component } from 'react';
 
-class Greetings extends Component {
-    render() {
+class Greetings extends Component{
+    render(){
         return (
-            <h1>Hello from child Component</h1>
-        )
+            <div className='jumbotron'>
+                <h1>Hello from child Component!!</h1>
+            </div>
+        );
     }
 }
+
 export default Greetings;
