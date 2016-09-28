@@ -12,17 +12,17 @@ export default {
         publicPath: '/'
     },
     plugins: [
-        "react-hot-loader/babel",
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 include:path.join(__dirname, 'client'),
-                loaders: ['babel']
+                loaders: ["react-hot-loader/webpack",'babel'],
+
             }
         ]
     },
