@@ -16,6 +16,7 @@ class SignupPage extends Component {
         );
     }
 }
+
 SignupPage.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired
 }

@@ -8,7 +8,6 @@ export default () => {
                 <div className='navbar-header'>
                     <Link to='/' className='navbar-brand'>Red Dice</Link>
                 </div>
-
                 <div className='collapse navbar-collapse'>
                     <ul className='nav navbar-nav navbar-right'>
                         <li><Link to='/signup'>Sign up</Link></li>
