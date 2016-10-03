@@ -20,7 +20,7 @@ class SignupForm extends Component {
             isLoading: false
         }
 
-        this.handleChange = this.onChange.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
@@ -46,7 +46,8 @@ class SignupForm extends Component {
                     this.props.addFlashMessage({
                         type: 'success',
                         text: 'You have signed up successfully, Welcome!'
-                    });
+                    })
+                    this.context.router.push('/');
                 },
                 ({ data }) => this.setState({errors: data, isLoading:false})
             );
@@ -75,6 +76,7 @@ class SignupForm extends Component {
                         onChange={this.onChange}
                         value={this.state.email}
                         field='email'
+                        type='email'
                     />
 
                     <TextFieldGroup
@@ -83,6 +85,7 @@ class SignupForm extends Component {
                         onChange={this.onChange}
                         value={this.state.password}
                         field='password'
+                        type='password'
                     />
 
                     <TextFieldGroup
@@ -91,6 +94,7 @@ class SignupForm extends Component {
                         onChange={this.onChange}
                         value={this.state.passwordConfirmation}
                         field='passwordConfirmation'
+                        type='password'
                     />
 
                 <div className={classnames('from-group', {'has-error':errors.timezone})}>
@@ -120,5 +124,9 @@ class SignupForm extends Component {
 SignupForm.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired
+}
+
+SignupForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 export default SignupForm;

@@ -3,7 +3,7 @@ import { Component } from 'react';
 import SignupForm from './SignupForm';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../actions/signupActions';
-import { addFlashMessage } from '../actions/addFlashMessage';
+import { addFlashMessage } from '../actions/flashMessages';
 
 class SignupPage extends Component {
     render() {
@@ -19,7 +19,7 @@ class SignupPage extends Component {
 }
 
 SignupPage.propTypes = {
-    userSignupRequest: React.PropTypes.func.isRequired
+    userSignupRequest: React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired
 }
 
