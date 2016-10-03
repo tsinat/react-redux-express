@@ -3,6 +3,7 @@ import { Component } from 'react';
 import timezones from '../data/timezones';
 import map from 'lodash/map';
 import classnames from 'classnames';
+import validateInput from '../../server/shared/validations/signup';
 
 
 class SignupForm extends Component {
@@ -25,14 +26,25 @@ class SignupForm extends Component {
     handleChange(e) {
         this.setState({[e.target.name]: e.target.value})
     }
+    isValid() {
+        const { errors, isValid } = validateInput(this.state);
+
+        if(!isValid) {
+            this.setState({errors});
+        }
+
+        return isValid;
+    }
 
     onSubmit(e) {
-        this.setState({errors: {}, isLoading:true});
         e.preventDefault();
-        this.props.userSignupRequest(this.state).then(
-            () => {},
-            ({ data }) => this.setState({errors: data, isLoading:false})
-        );
+        if(this.isValid()){
+            this.setState({errors: {}, isLoading:true});
+            this.props.userSignupRequest(this.state).then(
+                () => {},
+                ({ data }) => this.setState({errors: data, isLoading:false})
+            );
+        }
     }
     render() {
         const { errors } = this.state;
@@ -104,7 +116,7 @@ class SignupForm extends Component {
                     </select>
                     {errors.timezone && <span className='help-block'>{errors.timezone}</span>}
                 </div>
-                
+
                 <div className='form-group'>
                     <button disabled={this.state.isLoading } className='btn btn-primary btn-lg'>
                         Sign up
