@@ -128,4 +128,5 @@ SignupForm.propTypes = {
 SignupForm.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
+
 export default SignupForm;
