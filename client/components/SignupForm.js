@@ -19,7 +19,6 @@ class SignupForm extends Component {
             errors: {},
             isLoading: false
         }
-
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
